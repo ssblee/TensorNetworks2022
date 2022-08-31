@@ -2,9 +2,8 @@
 % Author: <https://cqm.snu.ac.kr/ Seung-Sup Lee>
 %% 
 % We will provide a visual understanding of how the SVD can be used to compress 
-% large matrices. First load a sample image data of _Gwanghwamun_ (광
-% 
-% 화문), retrived from a <https://commons.wikimedia.org/wiki/File:%EA%B2%BD%EB%B3%B5%EA%B6%81_%EA%B4%91%ED%99%94%EB%AC%B8_(cropped).jpg 
+% large matrices. First load a sample image data of _Gwanghwamun_ (광화문), retrived 
+% from a <https://commons.wikimedia.org/wiki/File:%EA%B2%BD%EB%B3%B5%EA%B6%81_%EA%B4%91%ED%99%94%EB%AC%B8_(cropped).jpg 
 % Wikimedia page>.
 
 clear
