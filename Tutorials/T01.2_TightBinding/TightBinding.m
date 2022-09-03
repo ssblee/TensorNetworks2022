@@ -10,8 +10,8 @@
 % where the chain has $L$ sites, $t_\ell$ indicates the hopping amplitute between 
 % sites $\ell$ and $\ell+1$, and $\hat{c}_\ell^\dagger$ creates a particle at 
 % a site $\ell \in [1, L]$.
-%% Exercise (a): Compute the energy and degeneracy of ground states
-% Write a script or function that compute the ground-state energy and degeneracy 
+%% Exercise (a): Compute the energy and degeneracy of the many-body ground states
+% Write a script or function that computes the ground-state energy and degeneracy 
 % of this non-interacting tight-binding chain. The script or function takes the 
 % following input and output:
 % 
