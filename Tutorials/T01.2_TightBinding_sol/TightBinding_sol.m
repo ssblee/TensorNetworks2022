@@ -67,10 +67,10 @@ e_1p + flip(e_1p,1) % zeros up to numerical precision
 % written in $h$'s instead of $c$'s. So the energy eigenvalues of the "hole" Hamiltonian 
 % $\hat{H} [\{ \hat{h}_\ell, \hat{h}_\ell^\dagger \}]$ equals to those of the 
 % original Hamiltonian, indicating that hole excitations have the same energies 
-% as particle excitations. Note that hole excitations Hole excitations mean emptying 
-% out the single-particle levels below 0 (that were filled in the ground-state 
-% configurations), whle particle excitations filling up the levels above 0 (that 
-% were empty in the ground-state configurations).
+% as particle excitations. Note that hole excitations mean emptying out the single-particle 
+% levels below 0 (that were filled in the ground-state configurations), while 
+% particle excitations filling up the levels above 0 (that were empty in the ground-state 
+% configurations).
 % (2) $L = 11$, $t_\ell = 1$ for all $\ell$'s:
 
 [E_G,d_G,e_1p] = nonIntTB (ones(10,1));
