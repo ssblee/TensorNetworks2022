@@ -38,7 +38,8 @@ for it = (1:(numel(sz)-1))
     R = reshape(R,[szl*sz(it), prod(sz(it+1:end))]);
     [Q{it},R] = qr(R,0);
     Q{it} = reshape(Q{it},[szl, sz(it), numel(Q{it})/szl/sz(it)]);
-    szl = size(Q{it},3); % update the bond dimension
+    Q{it} = permute(Q{it},[1 3 2]); % permute to the left-right-bottom order
+    szl = size(Q{it},2); % update the bond dimension
     R = reshape(R,[szl,sz(it+1:end)]);
 end
 Q{end} = R;
