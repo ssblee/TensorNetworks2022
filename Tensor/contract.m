@@ -1,7 +1,7 @@
 function C = contract(A,rankA,idA,B,rankB,idB,varargin)
 % < Description >
 %
-% C = contract(A,rankA,idA,B,rankB,idB [,idC] [,'-v']) 
+% C = contract(A,rankA,idA,B,rankB,idB [,p] [,'-v']) 
 %
 % Contract tensors A and B. The legs to be contracted are given by idA
 % and idB.
@@ -19,32 +19,31 @@ function C = contract(A,rankA,idA,B,rankB,idB,varargin)
 %        be given by the direct product of A and B.
 % 
 % < Option >
-% idC : [integer array] To permute the resulting tensor after contraction,
-%       assign the permutation indices as idC. If the dummy legs are
-%       attached (see the description of C below), this permutation is
-%       applied *after* the attachment.
+% p : [integer array] To permute the resulting tensor after contraction,
+%       assign the permutation indices as p. If the dummy legs are attached
+%       (see the description of C below), this permutation is applied
+%       *after* the attachment.
 %       (Default: no permutation)
 % '-v' : Show details. Set this option to see how the legs of C are related
 %       to the legs of A and B.
 %
 % < Output >
-% C : [numeric array] Contraction of A and B. If idC is given, the
-%       contracted tensor is permuted accordingly. If the number of open
-%       legs are smaller than 2, the dummy legs are assigned to make the
-%       result array C be two-dimensional.
+% C : [numeric array] Contraction of A and B. If p is given, the contracted
+%       tensor is permuted accordingly. If the number of open legs are
+%       smaller than 2, the dummy legs are assigned to make the result array C be two-dimensional.
 %
 % Written by S.Lee (Apr.30,2017)
 % Updated by S.Lee (Apr.25,2019): Revised code.
 
 
 % % default values of options
-idC = []; % permutation of the contracted tensor (default: no permutation)
+p = []; % permutation of the contracted tensor (default: no permutation)
 oshow = false; % option to show details
 
 % % % parsing options
 while ~isempty(varargin)
     if isnumeric(varargin{1})
-        idC = varargin{1};
+        p = varargin{1};
         varargin(1) = [];
     elseif isequal(varargin{1},'-v')
         oshow = true;
@@ -104,9 +103,9 @@ if ~isempty(idA) % sanity check of idA and idB
 end
 
 % check whether permutation option is correct
-if ~isempty(idC) && (numel(idC) < (rankA + rankB - 2*numel(idA)))
+if ~isempty(p) && (numel(p) < (rankA + rankB - 2*numel(idA)))
     error(['ERR: # of indices for the permutation after contraction (= ', ...
-        sprintf('%i',numel(idC)), ...
+        sprintf('%i',numel(p)), ...
         ') is different from # of legs after contraction (= ', ...
         sprintf('%i',(rankA + rankB - 2*numel(idA))),').']);
 end
@@ -140,8 +139,8 @@ end
 % reshape matrix to tensor
 C = reshape(C2,Cdim);
 
-if ~isempty(idC) % if permutation option is given
-    C = permute(C,idC);
+if ~isempty(p) % if permutation option is given
+    C = permute(C,p);
 end
 % % % % Main computational part (end) % % % %
 
@@ -170,8 +169,8 @@ if oshow
         end
     end
     
-    if ~isempty(idC) % if permutation option is given
-        Cstr = Cstr(idC);
+    if ~isempty(p) % if permutation option is given
+        Cstr = Cstr(p);
     end
     
     for it = (1:numel(Cstr))
