@@ -6,7 +6,7 @@ function A = getIdentity(B,idB,varargin)
 % A = getIdentity(B,idB, [,p])
 %
 % Obtain the identity tensor in the space of the idB-th leg of B. For
-% example, consider a ket tensor B. Then A = getIdentity(B,3) results in:
+% example, consider a ket tensor B. Then A = getIdentity(B,2) results in:
 %
 %   1      2    1       2
 %  -->- B ->--*-->- A ->--
@@ -36,6 +36,7 @@ function A = getIdentity(B,idB,varargin)
 %                   C
 %                   |
 %                 1 ^
+%                   |
 %
 % < Input >
 % B, C : [numeric array] Tensors.

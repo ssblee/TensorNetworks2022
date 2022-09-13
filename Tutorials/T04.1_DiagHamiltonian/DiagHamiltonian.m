@@ -38,7 +38,7 @@
 % $$\hat{H} = \sum_{\ell = 1}^{N-1} ( -t_\ell \hat{c}_{\ell+1}^\dagger \hat{c}_{\ell} 
 % - t_\ell^* \hat{c}_{\ell}^\dagger \hat{c}_{\ell+1} ),$$
 % 
-% where the chain has $L$ sites, $t_\ell$ indicates the hopping amplitute between 
+% where the chain has $N$ sites, $t_\ell$ indicates the hopping amplitute between 
 % sites $\ell$ and $\ell+1$, and $\hat{c}_\ell^\dagger$ creates a particle at 
 % a site $\ell \in [1, N]$. Consider the case of $N = 11$ and $t_\ell = e^{\mathrm{i} 
 % \ell}$. Obtain the matrix elements of the Hamiltonian in the many-body state 
