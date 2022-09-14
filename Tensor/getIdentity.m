@@ -25,10 +25,10 @@ function A = getIdentity(B,idB,varargin)
 % example, consider a ket tensor B and the identity operator C at local
 % site. Then A = getIdentity(B,2,C,2) results in another ket tensor A:
 %
-%   1      2    1       3
+%   1      2    1       2
 %  -->- B ->--*-->- A ->--
 %       |           |
-%     3 ^         2 ^
+%     3 ^         3 ^
 %       |           |
 %                   *
 %                 2 ^           
