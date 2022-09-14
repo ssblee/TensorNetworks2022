@@ -38,7 +38,7 @@ function Cleft = updateLeft(Cleft,rankC,B,X,rankX,A)
 %        1 ^            ^                 |
 %          |            | 3               |
 %          \---------<- B'-<--            \----<-- 1
-%                    1     2
+%                    2     1
 %       * When Cleft is rank-2 and X is rank-3:
 %                    1     2
 %          /--------->- A ->--            /---->-- 2
@@ -50,7 +50,7 @@ function Cleft = updateLeft(Cleft,rankC,B,X,rankX,A)
 %        1 ^            ^                 |
 %          |            | 3               |
 %          \---------<- B'-<--            \----<-- 1
-%                    1     2
+%                    2     1
 %       * When both Cleft and X are rank-3:
 %                    1     2
 %          /--------->- A ->--            /---->-- 2
@@ -62,7 +62,7 @@ function Cleft = updateLeft(Cleft,rankC,B,X,rankX,A)
 %        1 ^            ^                 |
 %          |            | 3               |
 %          \---------<- B'-<--            \----<-- 1
-%                    1     2
+%                    2     1
 %       * When Cleft is rank-3 and X is rank-4:
 %                    1     2
 %          /--------->- A ->--            /---->-- 2
@@ -74,9 +74,9 @@ function Cleft = updateLeft(Cleft,rankC,B,X,rankX,A)
 %        1 ^            ^                 |
 %          |            | 3               |
 %          \---------<- B'-<--            \----<-- 1
-%                    1     2
+%                    2     1
 %       Here B' denotes the Hermitian conjugate (i.e., complex conjugate
-%       and permute legs by [3 2 1]) of B.
+%       and permute legs by [2 1 3]) of B.
 %
 % Written by H.Tu (May 3,2017); edited by S.Lee (May 19,2017)
 % Rewritten by S.Lee (May 5,2019)
