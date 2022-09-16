@@ -82,7 +82,7 @@ for it = (numel(M):-1:id+2)
     
 end
 
-]
+
 if id == 0 % purely right-canonical form
     % no trucation in SVD
 
