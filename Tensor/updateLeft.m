@@ -27,6 +27,18 @@ function Cleft = updateLeft(Cleft,rankC,B,X,rankX,A)
 % < Output >
 % Cleft : [tensor] Contracted tensor. The tensor network diagrams
 %       describing the contraction are as follows.
+%       * When Cleft is rank-2 and X is rank-2:
+%                    1     2
+%          /--------->- A ->--            /---->-- 2
+%          |            | 3               |
+%        2 ^            ^                 |
+%          |            | 2               |      
+%        Cleft          X         =>    Cleft 
+%          |            | 1               |
+%        1 ^            ^                 |
+%          |            | 3               |
+%          \---------<- B'-<--            \----<-- 1
+%                    2     1
 %       * When Cleft is rank-3 and X is rank-2:
 %                    1     2
 %          /--------->- A ->--            /---->-- 2
@@ -86,6 +98,7 @@ function Cleft = updateLeft(Cleft,rankC,B,X,rankX,A)
 %       and rank(X) == 4.
 % Updated by S.Lee (Sep.09,2022): Revised for the leg order convention used
 %       for the course at SNU.
+% Updated by S.Lee (Sep.16,2022): Added the case rankC = rankX = 2.
 
 % sanity check
 if isempty(Cleft)
@@ -116,9 +129,9 @@ if ~isempty(X)
                 T = contract(Cleft,rankC,[rankC 2],T,rankX+1,[2 rankX]);
                 Cleft = contract(B,3,[1 3],T,rankC+rankX-3,[1 2]);
             end
-        else % (rankC,rankX) = (2,3), (3,2)
+        else % (rankC,rankX) = (2,2), (2,3), (3,2)
             T = contract(Cleft,rankC,2,T,rankX+1,rankX);
-            Cleft = contract(B,3,[1 3],T,rankC+rankX-1,[1 rankC],[1 3 2]);
+            Cleft = contract(B,3,[1 3],T,rankC+rankX-1,[1 rankC],[1 (3:rankC) 2]);
         end
     elseif (rankX == 4) && (size(X,1) == 1) % no Cleft, rankX = 4
         % if X is rank-4 and its left leg is dummy, and Cleft is empty (i.e., identity)

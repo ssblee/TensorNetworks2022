@@ -1,0 +1,136 @@
+\documentclass[11pt,a4paper,oneside]{article}
+
+\usepackage{amsmath,amssymb,amsthm} 
+\usepackage{graphicx}
+\usepackage{enumerate}
+%\usepackage{enumitem}
+\usepackage{lastpage} % total page number
+\usepackage[bottom]{footmisc} % to keep footnotes at the bottom of pages
+\usepackage{braket}
+
+\usepackage{fancyhdr}
+\pagestyle{fancyplain}
+%\pagestyle{fancy}
+%\setlength{\headheight}{13.6pt}
+%\setlength{\headsep}{7pt}
+%\voffset-4.4mm
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0.4pt}
+
+\voffset-4.4mm
+\hoffset-4.4mm
+\marginparsep0mm
+\marginparwidth0mm
+\oddsidemargin0mm
+\evensidemargin0mm
+\topmargin  0mm
+\textwidth  168mm
+\textheight 240mm %A4: 297mm x 210mm
+\setlength{\footskip}{25pt}
+\setlength{\headsep}{13pt}	%default 25pt
+\setlength{\headheight}{12pt}	%def<ault 12pt ~4mm
+\setlength{\headwidth}{\textwidth}
+
+\lhead{{Tensor Network (2022)}}
+\rhead{{\scriptsize Seung-Sup Lee}}
+\lfoot{{\scriptsize }}
+\cfoot{{\scriptsize Page \thepage\ of \pageref{LastPage}}}
+\rfoot{{\scriptsize }}
+
+\usepackage[sort,numbers,merge,sort&compress]{natbib} % mimick the option used in revtex
+\newcommand*{\onlinecite}[1]{\citenum{#1}}
+
+%\DeclareCiteCommand{\onlinecite}%[\mkbibbrackets] % cite without brackets
+%  {\usebibmacro{cite:init}%
+%   \usebibmacro{prenote}}
+%  {\usebibmacro{citeindex}%
+%   \usebibmacro{cite:comp}}
+%  {}
+%  {\usebibmacro{cite:dump}%
+%   \usebibmacro{postnote}}
+
+% reduce line spacing in the bibliography (source: https://www.math.cmu.edu/~gautam/sj/blog/20140712-bibtex-spacing.html )
+\newlength{\bibitemsep}\setlength{\bibitemsep}{.2\baselineskip plus .05\baselineskip minus .05\baselineskip}
+\newlength{\bibparskip}\setlength{\bibparskip}{0pt}
+\let\oldthebibliography\thebibliography
+\renewcommand\thebibliography[1]{%
+  \oldthebibliography{#1}%
+  \setlength{\parskip}{\bibitemsep}%
+  \setlength{\itemsep}{\bibparskip}%
+}
+
+\usepackage[colorlinks=true,citecolor=blue,linkcolor=cyan,hypertexnames=false]{hyperref} % should be at the end of all the other packages
+
+\begin{document}
+
+\section*{AKLT state}
+
+The AKLT state is a translationally invariant matrix product state in which the same rank-3 tensor $B$ is repeated.
+Here we consider a chain of  length $L$ with periodic boundary conditions.
+In this case, the AKLT state $| \psi \rangle$ is written as
+\begin{equation}
+\begin{gathered}
+| \psi \rangle = \sum_{\sigma_1, \cdots, \sigma_L} | \sigma_L \sigma_{L-1} \cdots \sigma_{2} \sigma_{1} \rangle
+\mathrm{Tr} [ B^{\sigma_L} B^{\sigma_{L-1}} \cdots B^{\sigma_{2}} B^{\sigma_{1}} ],
+\\
+B^1 = \sqrt{\frac{2}{3}}
+\begin{pmatrix}
+0 & 1 \\ 0 & 0
+\end{pmatrix},
+\,\,\,
+B^2 = \sqrt{\frac{1}{3}}
+\begin{pmatrix}
+1 & 0 \\ 0 & -1
+\end{pmatrix},
+\,\,\,
+B^3 = -\sqrt{\frac{2}{3}}
+\begin{pmatrix}
+0 & 0 \\ 1 & 0
+\end{pmatrix},
+\end{gathered}
+\end{equation}
+where $\sigma = 1, 2, 3$ are the indices for the $S_z = +1, 0, -1$ states at each chain site, respectively.
+
+\begin{enumerate}[(a)]
+
+\item
+Verify that the tensor $B$ is both left- and right-normalized.
+
+\item
+Compute the transfer operator $T^{(\alpha, \alpha')}_{\phantom{(\alpha, \alpha')} (\beta, \beta')} = \sum_{\sigma} B^{\dagger \beta'}_{\phantom{\beta'} \alpha'  \sigma} B^{\alpha \phantom{\beta} \sigma}_{\phantom{\alpha} \beta}$ without local operators.
+Verify that the eigenvalues of $T$ are $(1, -1/3, -1/3, -1/3)$.
+Note that the arrows for the left and right legs of $B^\dagger$, indexed by $\alpha'$ and $\beta'$, respectively, are implicitly flipped.
+
+\item
+A transfer operator involving a local operator $\hat{O}$ acting on the physical legs of $B$ and $B^\dagger$ is defined as
+\begin{equation}
+[T_{\hat{O}}]^{(\alpha, \alpha')}_{\phantom{(\alpha, \alpha')} (\beta, \beta')} 
+= \sum_{\sigma, \sigma'} B^{\dagger \beta'}_{\phantom{\beta'} \alpha'  \sigma'}
+[\hat{O}]^{\sigma}_{\phantom{\sigma} \sigma'}
+B^{\alpha \phantom{\beta} \sigma}_{\phantom{\alpha} \beta} .
+\end{equation}
+Obtain the transfer operators for $\hat{O} = \hat{S}_z$ and for $\hat{O} = \exp (\mathrm{i} \pi \hat{S}_z)$.
+
+\item 
+Derive the asymptotic (i.e., $\lim_{|m - n| \to \infty} \lim_{L \to \infty}$) behaviors of
+\begin{equation}
+\begin{gathered}
+\chi_{zz} (m - n) = \langle \psi | \hat{S}_{z [m]} \hat{S}_{z [n]} | \psi \rangle,
+\\
+\chi_\mathrm{string} (m - n) = \langle \psi | \hat{S}_{z [m]}
+e^{\mathrm{i} \pi \hat{S}_{z[m-1]}}
+e^{\mathrm{i} \pi \hat{S}_{z[m-2]}}
+\cdots
+e^{\mathrm{i} \pi \hat{S}_{z[n+2]}}
+e^{\mathrm{i} \pi \hat{S}_{z[n+1]}}
+\hat{S}_{z [n]} | \psi \rangle .
+\end{gathered}
+\end{equation}
+Check whether you get $\chi_{zz} \sim e^{- |m - n| / \xi}$ with $\xi = 1/\log 3$ and $\chi_\mathrm{string} = -4/9$.
+
+\end{enumerate}
+
+\end{document}
+
+
+
