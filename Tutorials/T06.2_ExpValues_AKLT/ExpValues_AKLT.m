@@ -62,8 +62,8 @@ disp(T); % not right-normalized
 % loss of generality.
 
 % transform into left-canonical form
-[M,S] = canonForm(M,numel(M),[],0);
-fprintf('Norm of MPS = %.4g\n',S);
+[M,Sv] = canonForm(M,numel(M),[],0);
+fprintf('Norm of MPS = %.4g\n',norm(Sv));
 %% 
 % Note that the norm was not unity. Now the MPS represented by the cell array 
 % |M| is normalized.
