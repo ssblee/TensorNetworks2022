@@ -40,7 +40,7 @@ for itN = (1:L)
     Hnow = updateLeft(Hprev,2,Anow,[],[],Anow);
 
     if itN > 1
-        % spin-spin interactopin
+        % spin-spin interaction
         Hsp = updateLeft(Sprev,3,Anow, ...
             permute(conj(S),[2 1 3]),3,Anow);
         Hnow = Hnow + J*Hsp;
@@ -126,7 +126,7 @@ Hs_tot = reshape(Hs_tot,(size(I,1)^L)*[1 1]);
 % The two forms of the Hamiltonian are equivalent.
 
 max(abs(Hs_tot(:)-Hnow(:)))
-%% Application of MPO onto MPS
+%% Application of an MPO Hamiltonian onto an MPS
 % We apply the MPO representation of Hamiltonian $\hat{H}$ (represented by a 
 % cell array |Hs|) onto the ground state $|\psi \rangle$ (by a cell array |M|). 
 % The tensors at each site, |Hs{n}| and |M{n}|, are contracted, and their horizontal 
