@@ -82,7 +82,8 @@ Hs{end} = Hs{end}(:,:,:,1); % choose the first components of the right leg
 %% Exercise (b): Complete the single-site DMRG function
 % There is a function |DMRG_GS_1site_Ex.m|, which is in the same sub-directory 
 % with this function. It is incomplete. Complete the parts enclosed by the comments 
-% |TODO (start)| and |TODO (end)|.
+% |TODO (start)| and |TODO (end)|. Don't forget to also complete its sub-function 
+% |eigs_1site_GS|!
 %% 
 % You can verify your solutions to Exercises (a) and (b) by comparing them with 
 % the exact results. Upon successful implementation, the |DMRG_1site_Ex| function 
