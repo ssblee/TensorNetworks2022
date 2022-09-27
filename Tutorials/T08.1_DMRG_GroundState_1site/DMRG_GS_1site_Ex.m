@@ -70,10 +70,10 @@ while ~isempty(varargin)
     switch varargin{1}
         case 'Krylov'
             nKrylov = varargin{2};
-            varargin(1:2) = 0;
+            varargin(1:2) = [];
         case 'tol'
             tol = varargin{2};
-            varargin(1:2) = 0;
+            varargin(1:2) = [];
         otherwise
             error('ERR: Unknown input.');
     end
@@ -107,7 +107,7 @@ M = canonForm(M,N,[],0);
 Eiter = zeros(N,2*Nsweep);
 % later, Eiter(end,end) will be taken as the final result E0
 
-Sv = cell(1,N); % collection of singular value vectors
+Sv = cell(1,N+1); % collection of singular value vectors
 
 % Contractions of MPO and MPS tensors that represent the effective
 % Hamiltonian for the left/right parts of the chain: When the orthogonality
@@ -179,7 +179,7 @@ end
 function [Anew,Enew] = eigs_1site_GS (Hleft,Hcen,Hright,Aold,nKrylov,tol)
 % < Description >
 %
-% Anew = eigs_1site_GS (Hleft,Hcen,Hright,Aold)
+% Anew = eigs_1site_GS (Hleft,Hcen,Hright,Aold,nKrylov,tol)
 %
 % Update an MPS tensor acting on a single site, by solving the effective
 % Hamiltonian via the Lanczos method.

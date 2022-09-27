@@ -77,11 +77,11 @@ Hs{end} = Hs{end}(:,:,:,1); % choose the first components of the right leg
 % result or random tensors. Write the code that performs *iterative diagonalization 
 % with the MPO Hamiltonian.* At each iteration, keep at most |Nkeep| states, *without* 
 % keeping degenerate states near truncation thresholds altogether (or discard 
-% them altogether). Obtain an MPS represented by a cell array |M|, where |M{n}| 
+% them altogether). Obtain an MPS represented by a cell array |Minit|, where |Minit{n}| 
 % is a rank-3 tensor for site n.
 %% Exercise (b): Complete the single-site DMRG function
 % There is a function |DMRG_GS_1site_Ex.m|, which is in the same sub-directory 
-% with this function. It is incomplete. Complete the parts enclosed by the comments 
+% with this script. It is incomplete. Complete the parts enclosed by the comments 
 % |TODO (start)| and |TODO (end)|. Don't forget to also complete its sub-function 
 % |eigs_1site_GS|!
 %% 
@@ -89,7 +89,7 @@ Hs{end} = Hs{end}(:,:,:,1); % choose the first components of the right leg
 % the exact results. Upon successful implementation, the |DMRG_1site_Ex| function 
 % will run like:
 
-[M0,E0,Eiter] = DMRG_GS_1site(M,Hs,Nkeep,Nsweep);
+[M0,E0,Eiter] = DMRG_GS_1site(Minit,Hs,Nkeep,Nsweep);
 %% 
 % Compare the DMRG result of the ground-state energy, |E0|, with the exact value.
 
