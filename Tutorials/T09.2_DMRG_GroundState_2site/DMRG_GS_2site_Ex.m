@@ -42,12 +42,13 @@ function [M,E0,Eiter,Sv] = DMRG_GS_2site_Ex (M,Hs,Nkeep,Nsweep,varargin)
 %       have the minimum expectation value of the Hamiltonian Hs. It is in
 %       a left-canonical form, since the last sweep is left-to-right.
 % E0 : [numeric] The energy of M.
-% Eiter : [N x (2*Nsweep) numeric array] Each element Eiter(m,n) means the
-%       variational energy in the m-th iteration within the n-th sweep.
+% Eiter : [(N-1) x (2*Nsweep) numeric array] Each element Eiter(m,n) means
+%       the variational energy in the m-th iteration within the n-th sweep.
 %       Odd n is for right-to-left sweep and even n for left-to-right
-%       sweep. Note that the iteration index m matches with the site index
-%       for left-to-right sweep; the iteration m corresponds to the site
-%       (N+1-m) for right-to-left sweep.
+%       sweep. Note that the iteration index m matches with the index of
+%       the site just left to the orthogonality center for left-to-right
+%       sweep; the iteration m corresponds to the site (N-m) for
+%       right-to-left sweep.
 % Sv : [1 x (N+1) cell array] Sv{n} contains a vector of singular values on
 %       the bond between sites n-1 and n, for 1 < n < N. Sv{1} and Sv{end}
 %       are empty (= []), since they are for the dummy legs and the
@@ -178,7 +179,7 @@ end
 function [Anew,Enew] = eigs_2site_GS (Hleft,Hcen1,Hcen2,Hright,Aold,nKrylov,tol)
 % < Description >
 %
-% Anew = eigs_1site_GS (Hleft,Hcen1,Hcen2,Hright,Aold,nKrylov,tol)
+% Anew = eigs_2site_GS (Hleft,Hcen1,Hcen2,Hright,Aold,nKrylov,tol)
 %
 % Update an MPS tensor acting on two neighboring sites, by solving the
 % effective Hamiltonian via the Lanczos method.
@@ -197,7 +198,7 @@ function [Anew,Enew] = eigs_2site_GS (Hleft,Hcen1,Hcen2,Hright,Aold,nKrylov,tol)
 %       the parent function for details.
 %
 % < Output >
-% Anew : [rank-3 tensor] The approximate ground state of the effective
+% Anew : [rank-4 tensor] The approximate ground state of the effective
 %       Hamiltonian obtained by the Lanczos method, using the Krylov
 %       subspace with dimension up to "nKrylov".
 % Enew : [numeric] Expectation value of the effective Hamiltonian with
