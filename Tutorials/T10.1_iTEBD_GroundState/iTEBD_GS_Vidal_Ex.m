@@ -87,7 +87,7 @@ end
 % % % 
 
 % show information
-disptime(['iTEBD ground state search: Bond dim. Nkeep = ',sprintf('%i',Nkeep), ...
+disptime(['iTEBD ground state search: Nkeep = ',sprintf('%i',Nkeep), ...
     ', # of imag. time steps = ',sprintf('%.4g',Nstep)]);
 
 % energy expectation value at each step
@@ -111,7 +111,7 @@ for it1 = (1:Nstep)
         % Contract Lambda's and Gamma's to construct a rank-4 ket tensor to
         % be updated
     
-        % Contract a two-site gate exp(-taus(it1)*H) with ket tensors
+        % Contract a two-site gate exp(-taus(it1)*H) with the ket tensor
     
         % SVD; truncate singular values smaller than Skeep (= 1e-8 by
         % default)
@@ -126,8 +126,8 @@ for it1 = (1:Nstep)
         %      = TA                 = TB                      = TC
         % TA, TB, and TC are useful choice of tensor contractions.
         % The physical legs of TA and TB contract to the legs of the
-        % two-site gate that updates the odd bond; those of TB and TC for
-        % updating the even bond.
+        % two-site gate that updates an odd bond; those of TB and TC for
+        % updating an even bond.
         % And assume that the tensors on the left and the right of this
         % rank-5 ket tensor are precisely left- and right-normalized,
         % respectively. Of course they are not, but Vidal has found that
