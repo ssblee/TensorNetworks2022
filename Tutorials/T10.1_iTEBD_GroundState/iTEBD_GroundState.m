@@ -1,8 +1,8 @@
 %% iTEBD: Ground state search
 % Author: <https://cqm.snu.ac.kr Seung-Sup Lee>
 %% 
-% In this tutorial, we implement the infinite time-evolving block decimation 
-% (iTEBD) method, especially the original iTEBD algorithm proposed by G. Vidal 
+% In this tutorial, we implement the *infinite time-evolving block decimation 
+% (iTEBD)* method, especially the original iTEBD algorithm proposed by G. Vidal 
 % [<https://journals.aps.org/prl/abstract/10.1103/PhysRevLett.98.070201 G. Vidal, 
 % Phys. Rev. Lett. *98*, 070201 (2007)>]. With this, we obtain the ground states 
 % of infinite-length spin chains, in Vidal's $\Gamma$-$\Lambda$ representation 
