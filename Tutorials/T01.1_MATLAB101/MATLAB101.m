@@ -154,7 +154,7 @@ A-B
 A*B % doesn't work
 A.*B % element-wise multiplication
 A./B % element-wise division
-A/B % equivalent to mrdivide function, giving a solution C such that C*A = B
+A/B % equivalent to mrdivide function, giving a solution C such that C*B = A
 C = A/B;
 C*B-A % output will be 0, up to double precision
 %% Size commands
