@@ -37,9 +37,9 @@ function [ts,M,Ovals,EE,dw] = tDMRG_Ex (M,Hs,O,Nkeep,dt,tmax)
 %
 % O : [matrix] Rank-2 tensor as a local operator acting on a site.
 % Nkeep : [integer] Maximum bond dimension.
-% dt : [numeric] Real time step size. Each real-time evolution by step dt
-%       consists of three Trotter steps, exp(-dt/2*Hodd) * exp(-dt*Heven) *
-%       exp(-dt/2*Hodd).
+% dt : [numeric] Time step size. Each real-time evolution by step dt
+%       consists of three exponential terms, exp(-1i*dt/2*Hodd) *
+%       exp(-1i*dt*Heven) * exp(-1i*dt/2*Hodd).
 % tmax : [numeric] Maximum time range.
 %
 % < Output >
@@ -67,7 +67,7 @@ tobj = tic2;
 
 % % % check the integrity of input
 if numel(M) ~= (numel(Hs)+1)
-    error('ERR: it should be: numel(M) == (numel(H)+1)');
+    error('ERR: it should be: numel(M) == (numel(Hs)+1)');
 elseif ~ismatrix(O)
     error('ERR: local operator O should be rank 2.');
 end
