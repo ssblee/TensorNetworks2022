@@ -64,7 +64,7 @@ N = 55; % length of the Wilson chain
 % 
 % We first check the first point.
 
-disp(ff(1)^2 - 2*Delta0*D)
+disp(ff(1)^2 - 2*Delta0*D/pi)
 %% 
 % And we check the second point by mulitping rescaling factor $\Lambda^{n/2}$.
 
