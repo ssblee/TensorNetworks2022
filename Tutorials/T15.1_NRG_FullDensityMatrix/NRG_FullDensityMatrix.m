@@ -71,8 +71,8 @@ for itT = (1:numel(Ts))
     RK{itT} = Inrg.RK{1};
 end
 %% 
-% Let's check whether the reduced density matrices are diagonal. (*Quick Exercise:* 
-% Why is the reduced density matrix at the impurity site diagonal?)
+% Let's check whether the reduced density matrices are diagonal. (*Quick Exercise 
+% 1:* Why is the reduced density matrix at the impurity site diagonal?)
 
 disp(max(cellfun(@(x) max(max(abs(x - diag(diag(x))))), RK)));
 %% 
