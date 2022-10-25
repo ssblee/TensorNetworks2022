@@ -160,7 +160,11 @@ grid on;
 % the "self-energy trick" (see [<https://iopscience.iop.org/article/10.1088/0953-8984/10/37/021/meta 
 % R. Bulla, A. C. Hewson, and Th. Pruschke, J. Phys.: Condens. Matter *10*, 8365 
 % (1998)>]).
-%% Exercise (b): Dynamical susceptibilities
+%% Exercise (b): Temperature dependence of the impurity spectral function
+% Compute the impurity spectral function $A[\hat{d}_\sigma, \hat{d}_\sigma^\dagger] 
+% (\omega)$ for different temperatures. Discuss how the lineshapes change with 
+% temperatures.
+%% Exercise (c): Dynamical susceptibilities
 % In the previous tutorial, we computed the impurity contribution to the magnetic 
 % susceptibility. This property is static, i.e., does not depend on frequency 
 % $\omega$ (or energy, equivalently, by setting $\hbar = 1$). Some experimental 
