@@ -1,0 +1,104 @@
+\documentclass[11pt,a4paper,oneside]{article}
+
+\usepackage{amsmath,amssymb,amsthm} 
+\usepackage{graphicx}
+\usepackage{enumerate}
+%\usepackage{enumitem}
+\usepackage{lastpage} % total page number
+\usepackage[bottom]{footmisc} % to keep footnotes at the bottom of pages
+\usepackage{braket}
+
+\usepackage{fancyhdr}
+\pagestyle{fancyplain}
+%\pagestyle{fancy}
+%\setlength{\headheight}{13.6pt}
+%\setlength{\headsep}{7pt}
+%\voffset-4.4mm
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0.4pt}
+
+\voffset-4.4mm
+\hoffset-4.4mm
+\marginparsep0mm
+\marginparwidth0mm
+\oddsidemargin0mm
+\evensidemargin0mm
+\topmargin  0mm
+\textwidth  168mm
+\textheight 240mm %A4: 297mm x 210mm
+\setlength{\footskip}{25pt}
+\setlength{\headsep}{13pt}	%default 25pt
+\setlength{\headheight}{12pt}	%def<ault 12pt ~4mm
+\setlength{\headwidth}{\textwidth}
+
+\lhead{{Tensor Network (2022)}}
+\rhead{{\scriptsize Seung-Sup Lee}}
+\lfoot{{\scriptsize }}
+\cfoot{{\scriptsize Page \thepage\ of \pageref{LastPage}}}
+\rfoot{{\scriptsize }}
+
+\usepackage[sort,numbers,merge,sort&compress]{natbib} % mimick the option used in revtex
+\newcommand*{\onlinecite}[1]{\citenum{#1}}
+
+%\DeclareCiteCommand{\onlinecite}%[\mkbibbrackets] % cite without brackets
+%  {\usebibmacro{cite:init}%
+%   \usebibmacro{prenote}}
+%  {\usebibmacro{citeindex}%
+%   \usebibmacro{cite:comp}}
+%  {}
+%  {\usebibmacro{cite:dump}%
+%   \usebibmacro{postnote}}
+
+% reduce line spacing in the bibliography (source: https://www.math.cmu.edu/~gautam/sj/blog/20140712-bibtex-spacing.html )
+\newlength{\bibitemsep}\setlength{\bibitemsep}{.2\baselineskip plus .05\baselineskip minus .05\baselineskip}
+\newlength{\bibparskip}\setlength{\bibparskip}{0pt}
+\let\oldthebibliography\thebibliography
+\renewcommand\thebibliography[1]{%
+  \oldthebibliography{#1}%
+  \setlength{\parskip}{\bibitemsep}%
+  \setlength{\itemsep}{\bibparskip}%
+}
+
+\usepackage[colorlinks=true,citecolor=blue,linkcolor=cyan,hypertexnames=false]{hyperref} % should be at the end of all the other packages
+
+\begin{document}
+
+\section*{Lehmann representation for a non-interacting system}
+
+Consider a generic non-interacting system of fermions, whose Hamiltonian is quadratic, i.e.,
+\begin{equation}
+\hat{H} = \sum_{ij} [ \boldsymbol{h} ]_{ij} \hat{c}_{i}^\dagger \hat{c}_{j} ,
+\end{equation}
+where $\hat{c}_{i}^\dagger$ creates a fermionic particle in the $i$-th spin-orbital, and the spin-orbitals form the orthonormal basis.
+The single-particle Hamiltonian $\boldsymbol{h}$, which is Hermitian, can be diagonalized as
+\begin{equation}
+\boldsymbol{h} = \boldsymbol{V} \boldsymbol{\epsilon} \boldsymbol{V}^\dagger,
+\end{equation}
+where $[\boldsymbol{\epsilon}]_{ij} = \epsilon_i \delta_{ij}$ is the diagonal matrix containing the single-particle energy eigenvalues $\epsilon_i$,
+and $\boldsymbol{V} = ( \vec{v}_1 \vec{v}_2 \cdots )$ is the unitary matrix whose column vectors are the eigenvectors of $\boldsymbol{h}$.
+
+Since the (many-body) Hamiltonian $\hat{H}$ is quadratic, the retarded Green's function,
+\begin{equation}
+G[\hat{d}_i, \hat{d}_j^\dagger] (t) = -i \theta (t) \, \mathrm{Tr}\!\left( \hat{\rho} \, [ \hat{d}_i (t), \hat{d}_j^\dagger ]_\pm ] \right),
+\end{equation}
+and its spectral function,
+\begin{equation}
+A[\hat{d}_i, \hat{d}_j^\dagger] (\omega) = \frac{-1}{\pi} \mathrm{Im} \int_{-\infty}^{+\infty} \mathrm{d}t \, e^{\mathrm{i} \omega t} \, G[\hat{d}_i, \hat{d}_j^\dagger] (t),
+\end{equation}
+can be computed exactly.
+
+\begin{enumerate}[(a)]
+
+\item
+Evaluate the spectral function $A[\hat{d}_i, \hat{d}_j^\dagger] (\omega)$ by using the Lehmann representation.
+
+\item
+The local spectral function is the case of $i = j$ in which the two defining operators $\hat{d}_i$ and $\hat{d}_i^\dagger$ act on the same spin-orbital.
+Explain why the local spectral function can be interpreted as the local density of states.
+
+\end{enumerate}
+
+\end{document}
+
+
+
