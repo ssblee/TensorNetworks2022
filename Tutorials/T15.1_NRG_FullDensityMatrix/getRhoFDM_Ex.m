@@ -7,17 +7,18 @@ function Inrg = getRhoFDM_Ex (Inrg,T)
 % and kept states, for given temperature T.
 %
 % < Input >
-% Inrg : [struct] NRG information obtained after running NRG_1channel.
+% Inrg : [struct] NRG information obtained after running NRG_IterDiag.
 % T : [number] Temperature. Here we set \hbar = k_B = 1.
 %
 % < Ouput >
-% Inrg : [struct] NRG result. It keeps the result of NRG_1channel. In
+% Inrg : [struct] NRG result. It keeps the result of NRG_IterDiag. In
 %       addition to the result, this function adds two more fields to Inrg:
 %   .RD, .RK : [cell] Full density matrix in the discarded and kept state
 %       basis, respectively. Each cell element Inrg.RD{n} is a column
 %       vector whose elements are the density matrix elements associated
-%       with the discarded energy eigenstates at the iteration n-1. (Note
-%       that s00 for n = 1 is for the iteration diagonalizing K00 basis.)
+%       with the discarded energy eigenstates at iteration n-1. (Refer to
+%       the documentation of NRG_IterDiag for the interation indexing
+%       convention.)
 %       Inrg.RK{n} is a matrix in the basis of the kept energy eigenstates
 %       at the iteration n-1.
 %
