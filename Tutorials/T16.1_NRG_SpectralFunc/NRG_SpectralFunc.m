@@ -139,12 +139,12 @@ grid on;
 %% 
 % # The system has the spin symmetry (due to the absence of magnetic field) 
 % and the particle-hole symmetry. So all the curves lie on top of each other.
-% # There are side peaks at $\omega = \pm U/2$, as marked by vertical dash-dotted 
-% line. They come from local excitations from singly occupied states to the double 
-% occupied state for the peak at $\omega = U/2$ (to the empty state for the peak 
-% at $\omega = -U/2$).
+% # There are side peaks centered near $\omega = \pm U/2$, as marked by vertical 
+% dash-dotted line. They come from local excitations from singly occupied states 
+% to the double occupied state for the peak at $\omega = U/2$ (to the empty state 
+% for the peak at $\omega = -U/2$).
 % # The full-width-half-maximum of the "Kondo peak" (peak centered at $\omega 
-% = 0$) is roughly $T_\mathrm{K}$.
+% = 0$) is on the order of $T_\mathrm{K}$.
 % # There is a plateau for $| \omega | \ll T_\mathrm{K}$ which corresponds to 
 % the top of the Kondo peak. The height of the Kondo peak satisfies the Friedel 
 % sum rule, $\pi \Delta_0 A (\omega = 0) = 1$, up to a few percent error. Note 
