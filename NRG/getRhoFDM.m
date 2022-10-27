@@ -72,8 +72,8 @@ end
 for itN = (N:-1:2)
     % Construct RK{itN-1} as the sum of RD{itN} and RK{itN}, with the local
     % Hilbert space for the site s(itN-1).
-    AD2 = permute(Inrg.AD{itN},[2 1 3]);
-    AK2 = permute(Inrg.AK{itN},[2 1 3]);
+    AD2 = permute(conj(Inrg.AD{itN}),[2 1 3]);
+    AK2 = permute(conj(Inrg.AK{itN}),[2 1 3]);
     RK{itN-1} = updateLeft(diag(RD{itN}),2,AD2,[],[],AD2) ...
         + updateLeft(RK{itN},2,AK2,[],[],AK2);
     % NOTE: AK and AD are in left-canonical form, not right-canonical.
