@@ -22,7 +22,8 @@ function [odisc,Adisc] = getAdisc_Ex (Inrg,O1,O2,Z,varargin)
 % representation are binned into a histogram vector Adisc.
 %
 % < Input >
-% Inrg : [struct] NRG information obtained after running NRG_IterDiag.
+% Inrg : [struct] NRG information obtained after running NRG_IterDiag and
+%       then running getRhoFDM. 
 % O1, O2 : [tensor] Operator acting at the impurity, corresponding to the
 %       third (= bottom) leg of A0.
 % Z : [tensor] Fermionic sign operator at each chain site. If O1 and O2 are
