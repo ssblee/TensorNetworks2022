@@ -1,0 +1,175 @@
+\documentclass[11pt,a4paper,oneside]{article}
+
+\usepackage{amsmath,amssymb,amsthm} 
+\usepackage{graphicx}
+\usepackage{enumerate}
+%\usepackage{enumitem}
+\usepackage{lastpage} % total page number
+\usepackage[bottom]{footmisc} % to keep footnotes at the bottom of pages
+\usepackage{braket}
+
+\usepackage{fancyhdr}
+\pagestyle{fancyplain}
+%\pagestyle{fancy}
+%\setlength{\headheight}{13.6pt}
+%\setlength{\headsep}{7pt}
+%\voffset-4.4mm
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0.4pt}
+
+\voffset-4.4mm
+\hoffset-4.4mm
+\marginparsep0mm
+\marginparwidth0mm
+\oddsidemargin0mm
+\evensidemargin0mm
+\topmargin  0mm
+\textwidth  168mm
+\textheight 240mm %A4: 297mm x 210mm
+\setlength{\footskip}{25pt}
+\setlength{\headsep}{13pt}	%default 25pt
+\setlength{\headheight}{12pt}	%def<ault 12pt ~4mm
+\setlength{\headwidth}{\textwidth}
+
+\lhead{{Tensor Network (2022)}}
+\rhead{{\scriptsize Seung-Sup Lee}}
+\lfoot{{\scriptsize }}
+\cfoot{{\scriptsize Page \thepage\ of \pageref{LastPage}}}
+\rfoot{{\scriptsize }}
+
+\usepackage[sort,numbers,merge,sort&compress]{natbib} % mimick the option used in revtex
+\newcommand*{\onlinecite}[1]{\citenum{#1}}
+
+%\DeclareCiteCommand{\onlinecite}%[\mkbibbrackets] % cite without brackets
+%  {\usebibmacro{cite:init}%
+%   \usebibmacro{prenote}}
+%  {\usebibmacro{citeindex}%
+%   \usebibmacro{cite:comp}}
+%  {}
+%  {\usebibmacro{cite:dump}%
+%   \usebibmacro{postnote}}
+
+% reduce line spacing in the bibliography (source: https://www.math.cmu.edu/~gautam/sj/blog/20140712-bibtex-spacing.html )
+\newlength{\bibitemsep}\setlength{\bibitemsep}{.2\baselineskip plus .05\baselineskip minus .05\baselineskip}
+\newlength{\bibparskip}\setlength{\bibparskip}{0pt}
+\let\oldthebibliography\thebibliography
+\renewcommand\thebibliography[1]{%
+  \oldthebibliography{#1}%
+  \setlength{\parskip}{\bibitemsep}%
+  \setlength{\itemsep}{\bibparskip}%
+}
+
+\usepackage[colorlinks=true,citecolor=blue,linkcolor=cyan,hypertexnames=false]{hyperref} % should be at the end of all the other packages
+
+\begin{document}
+
+\section*{Lehmann representation for a non-interacting system}
+
+Consider a generic non-interacting system of fermions, whose Hamiltonian is quadratic, i.e.,
+\begin{equation}
+\hat{H} = \sum_{ij} [ \boldsymbol{h} ]_{ij} \hat{c}_{i}^\dagger \hat{c}_{j} ,
+\end{equation}
+where $\hat{c}_{i}^\dagger$ creates a fermionic particle in the $i$-th spin-orbital, and the spin-orbitals form the orthonormal basis.
+The single-particle Hamiltonian $\boldsymbol{h}$, which is Hermitian, can be diagonalized as
+\begin{equation}
+\boldsymbol{h} = \boldsymbol{V} \boldsymbol{\epsilon} \boldsymbol{V}^\dagger,
+\label{eq:eig_h}
+\end{equation}
+where $[\boldsymbol{\epsilon}]_{ij} = \epsilon_i \delta_{ij}$ is the diagonal matrix containing the single-particle energy eigenvalues $\epsilon_i$,
+and $\boldsymbol{V} = ( \vec{v}_1 \vec{v}_2 \cdots )$ is the unitary matrix whose column vectors are the eigenvectors of $\boldsymbol{h}$.
+
+Since the (many-body) Hamiltonian $\hat{H}$ is quadratic, the retarded Green's function,
+\begin{equation}
+G[\hat{c}_i, \hat{c}_j^\dagger] (t) = -i \theta (t) \, \mathrm{Tr}\!\left( \hat{\rho} \, [ \hat{c}_i (t), \hat{c}_j^\dagger ]_\pm ] \right),
+\end{equation}
+and its spectral function,
+\begin{equation}
+A[\hat{c}_i, \hat{c}_j^\dagger] (\omega) = \frac{-1}{\pi} \mathrm{Im} \int_{-\infty}^{+\infty} \mathrm{d}t \, e^{\mathrm{i} \omega t} \, G[\hat{c}_i, \hat{c}_j^\dagger] (t),
+\end{equation}
+can be computed exactly.
+
+\begin{enumerate}[(a)]
+
+\item
+Evaluate the spectral function $A[\hat{c}_i, \hat{c}_j^\dagger] (\omega)$ by using the Lehmann representation.
+
+\textbf{[Solution]}
+The diagonalized form of the Hamiltonian is 
+\begin{equation}
+\hat{H} = \sum_{k} \epsilon_k \hat{d}_k^\dagger \hat{d}_k = \sum_{k} \epsilon_k \hat{n}_{k},
+\end{equation}
+where $\hat{d}_k^\dagger = \sum_{i} \hat{c}_i^\dagger [\boldsymbol{V}]_{ik}$ creates a particle in the eigenmode of energy $\epsilon_k$ and $\hat{n}_{k} = \hat{d}_k^\dagger \hat{d}_k$ counts the particle number in the eigenmode.
+(Here we call the single-particle energy eigenstates as eigenmodes, to distinguish from many-body energy eigenstates.)
+The number operators $\hat{n}_{k}$ commute each other, and they also commute with the Hamiltonian.
+Therefore, the eigenvalues of the number operators are good quantum numbers.
+Indeed, we can represent the eigenstates as 
+\begin{equation}
+| \boldsymbol{n} \rangle = \cdots | n_{k+1} \rangle | n_{k} \rangle | n_{k-1} \rangle \cdots , 
+\end{equation}
+where $[\boldsymbol{n}]_k = n_k =  0,1$ is the eigenvalue of $\hat{n}_k$.
+The energy eigenvalue corresponding to $|\boldsymbol{n} \rangle$ is $E_{\boldsymbol{n}} = \sum_k \epsilon_k n_k$.
+
+Then, the Lehmann representation of $A[\hat{d}_k, \hat{d}_l^\dagger] (\omega)$ is given as follows:
+\begin{equation}
+\sum_{\boldsymbol{n}, \boldsymbol{n}'}
+( \langle \boldsymbol{n} | \hat{\rho} | \boldsymbol{n} \rangle\!\langle\boldsymbol{n} | \hat{d}_k | \boldsymbol{n}' \rangle\!\langle \boldsymbol{n'} | \hat{d}_{l}^\dagger | \boldsymbol{n} \rangle
++
+\langle \boldsymbol{n} | \hat{d}_k | \boldsymbol{n}' \rangle\!\langle \boldsymbol{n'} | \hat{\rho}  | \boldsymbol{n'} \rangle\!\langle \boldsymbol{n'} | \hat{d}_{l}^\dagger | \boldsymbol{n} \rangle )
+\, \delta (\omega - (E_{\boldsymbol{n}'} - E_{\boldsymbol{n}})) .
+\end{equation}
+We see that $\langle\boldsymbol{n} | \hat{d}_k | \boldsymbol{n}' \rangle$ is finite only when $n'_k = 1$, $n_k = 0$, and $n'_m = n_m$ for $m \neq k$.
+Similarly, $\langle \boldsymbol{n'} | \hat{d}_{l}^\dagger | \boldsymbol{n} \rangle$ is finite only when $n'_l = 1$, $n_l = 0$, and $n'_m = n_m$ for $m \neq l$.
+Therefore, it should hold that $k = l$; otherwise $A[\hat{d}_k, \hat{d}_l^\dagger] (\omega) = 0$.
+
+So we get
+\begin{equation}
+A[\hat{d}_k, \hat{d}_l^\dagger] (\omega) = 
+\delta_{kl}
+\sum_{\boldsymbol{n}, \boldsymbol{n}'}
+(\langle \boldsymbol{n} | \hat{\rho} | \boldsymbol{n} \rangle + \langle \boldsymbol{n}' | \hat{\rho} | \boldsymbol{n}' \rangle)
+\underbrace{| \langle\boldsymbol{n} | \hat{d}_k | \boldsymbol{n}' \rangle |^2}_{= 1}
+\,
+\, \delta (\omega - \underbrace{(E_{\boldsymbol{n}'} - E_{\boldsymbol{n}})}_{= \epsilon_k}) .
+\end{equation}
+The underbraced terms are independent from $\boldsymbol{n}$ and $\boldsymbol{n}'$ as long as they are finite.
+So they can be pulled out of the summation $\sum_{\boldsymbol{n}, \boldsymbol{n}'}$,
+\begin{equation}
+A[\hat{d}_k, \hat{d}_l^\dagger] (\omega) = 
+\delta_{kl}
+\delta (\omega - \epsilon_k)
+\underbrace{\sum_{\boldsymbol{n}, \boldsymbol{n}'}
+(\langle \boldsymbol{n} | \hat{\rho} | \boldsymbol{n} \rangle + \langle \boldsymbol{n}' | \hat{\rho} | \boldsymbol{n}' \rangle)}_{= \sum_{\boldsymbol{n}''} \langle \boldsymbol{n}'' | \hat{\rho} | \boldsymbol{n}'' \rangle = 1} .
+\end{equation}
+The equality in this underbrace holds because the sets $\{ | \boldsymbol{n} \rangle \}$ and $\{ | \boldsymbol{n}' \rangle \}$ are exclusive, since $n_k \neq n'_k$, and their union equals to the set of all the eigenstates, since there is no further constraint other than $n_m = n'_m$ for $m \neq k$.
+
+Therefore, we obtain the spectral function defined by $\hat{c}$ operators by applying the unitary transformation $\hat{c}_i^\dagger = \sum_{k} \hat{d}_k^\dagger [\boldsymbol{V}^{-1}]_{ki} =  \sum_{k} \hat{d}_k^\dagger [\boldsymbol{V}]_{ik}^*$,
+which is clear from the structure of the Lehmann representation.
+\begin{equation}
+A[\hat{c}_i, \hat{c}_j^\dagger] (\omega) = \sum_k [\boldsymbol{V}]_{ik} [\boldsymbol{V}]_{jl}^* 
+A[\hat{d}_k, \hat{d}_l^\dagger] (\omega)
+= \sum_k [\boldsymbol{V}]_{ik} [\boldsymbol{V}]_{jk}^* 
+\delta(\omega - \epsilon_k).
+\end{equation}
+
+
+\item
+The local spectral function is the case of $i = j$ in which the two defining operators $\hat{c}_i$ and $\hat{c}_i^\dagger$ act on the same spin-orbital.
+Explain why the local spectral function can be interpreted as the local density of states.
+
+\textbf{[Solution]}
+We have the local spectral function
+\begin{equation}
+A[\hat{c}_i, \hat{c}_i^\dagger] (\omega)
+= \sum_k | [\boldsymbol{V}]_{ik} |^2
+\delta(\omega - \epsilon_k).
+\end{equation}
+From the diagonalization of the single-particle Hamiltonian in Eq.~\eqref{eq:eig_h}, we can interpret $| [\boldsymbol{V}]_{ik} |^2$ as the probability that the particle at site $i$ is in the eigenmode $k$.
+Of course, such probabilities are non-negative, $| [\boldsymbol{V}]_{ik} |^2 \geq 0$, and sum up to the unity, $\sum_k | [\boldsymbol{V}]_{ik} |^2 = 1$.
+Therefore the local spectral function can be interpreted as the local density of states.
+
+\end{enumerate}
+
+\end{document}
+
+
+
