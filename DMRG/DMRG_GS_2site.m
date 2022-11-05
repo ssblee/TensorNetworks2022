@@ -186,7 +186,7 @@ end
 function [Anew,Enew] = eigs_2site_GS (Hleft,Hcen1,Hcen2,Hright,Aold,nKrylov,tol)
 % < Description >
 %
-% Anew = eigs_1site_GS (Hleft,Hcen1,Hcen2,Hright,Aold,nKrylov,tol)
+% Anew = eigs_2site_GS (Hleft,Hcen1,Hcen2,Hright,Aold,nKrylov,tol)
 %
 % Update an MPS tensor acting on two neighboring sites, by solving the
 % effective Hamiltonian via the Lanczos method.
