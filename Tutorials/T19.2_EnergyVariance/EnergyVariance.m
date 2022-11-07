@@ -168,15 +168,17 @@ ylabel('contributions to $\Delta_{E}^{1\perp}$','Interpreter','latex');
 % 
 % $$\hat{H} = -t \sum_{i = 1}^{L-1} \sum_{\sigma = {\uparrow},{\downarrow}} 
 % ( \hat{c}_{i+1,\sigma}^\dagger \hat{c}_{i,\sigma} + \hat{c}_{i,\sigma}^\dagger 
-% \hat{c}_{i+1,\sigma} ) + \sum_{i = 1}^{L} U \hat{n}_{i\uparrow} \hat{n}_{i\downarrow},$$
+% \hat{c}_{i+1,\sigma} ) + \sum_{i = 1}^{L} \left( \frac{U \hat{n}_{i} (\hat{n}_{i} 
+% - 1)}{2} - \mu \hat{n}_{i} \right)$$
 % 
 % where $\hat{c}_{i\sigma}^\dagger$ creates a particle of spin-$\sigma$ at site 
-% $i$, and $\hat{n}_{i \sigma} = \hat{c}_{i\sigma}^\dagger \hat{c}_{i\sigma}$ 
-% counts the number of spin-$\sigma$ particle at site $i$. Here we choose the 
+% $i$, and $\hat{n}_{i} = \sum_{\sigma = \uparrow,\downarrow}\hat{c}_{i\sigma}^\dagger 
+% \hat{c}_{i\sigma}$ counts the number particles at site $i$. Here we choose the 
 % chain length $L = 30$, the hopping amplitude $t = 1$, and the interaction strength 
-% $U = 8$. Perform the DMRG ground-state search for this system for different 
-% values of |Nkeep|. Extrapolate the ground-state energy towards the limit of 
-% vanishing two-site energy variance.
+% $U = 8$. By choosing $\mu = U/2$, the system is particle-hole symmetric. Perform 
+% the DMRG ground-state search for this system for different values of |Nkeep|. 
+% Extrapolate the ground-state energy towards the limit of vanishing two-site 
+% energy variance.
 % 
 % Note that the Hubbard model is much harder to solve than the XY spin chain, 
 % since the minimization of the kinetic energy and that of the interaction energy 
