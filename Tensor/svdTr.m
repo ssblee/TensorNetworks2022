@@ -65,7 +65,7 @@ S2 = diag(S2);
 if isempty(Nkeep)
     Nkeep = Inf;
 end
-if isempty(Skeep)
+if isempty(Skeep) && ~isempty(S2)
     Skeep = 10*eps(S2(1));
 end
 

@@ -7,8 +7,8 @@ function [E_G, d_G, e_1p] = nonIntTB (t)
 % non-interacting spinless fermions on a tight-binding chain. The input
 % parameterizes the hopping amplitudes.
 % 
-% t : [numeric vector] Each element t(n) indicates a hopping amplitude from
-%       site n to site n+1. The length of the vector numel(t) plut 1
+% t : [numeric vector] Each element -t(n) indicates a hopping amplitude
+%       from site n to site n+1. The length of the vector numel(t) plus 1
 %       defines the number of chain sites.
 %
 % < Output >
