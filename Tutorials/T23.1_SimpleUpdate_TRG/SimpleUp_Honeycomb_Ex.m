@@ -93,7 +93,8 @@ DH = diag(DH);
 % record of energy measurement
 Es = zeros(numel(betas),z);
 
-disptime('Start');
+disptime(['Simple update to find the ground state on a honeycomb lattice: Nkeep = ', ...
+    sprintf('%i',Nkeep),', # of imag. time steps = ',sprintf('%.4g',numel(betas))]);
 
 for it1 = (1:numel(betas))
     % imaginary time Trotter step

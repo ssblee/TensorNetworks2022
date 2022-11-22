@@ -66,7 +66,7 @@ if ~all(szA(1:3) == szB(1:3))
     error('ERR: The bond dimensions of A and B do not match.');
 end
 
-disp(['TERG on a honeycomb lattice: rgstep = ',sprintf('%g',rgstep), ...
+disp(['TRG on a honeycomb lattice: rgstep = ',sprintf('%g',rgstep), ...
     ', Nkeep = ',sprintf('%g',Nkeep)]);
 
 % make reduced tensor

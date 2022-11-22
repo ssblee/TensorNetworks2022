@@ -1,6 +1,5 @@
 %% Simple update and tensor renormalization group
-% Author: <https://www.theorie.physik.uni-muenchen.de/lsvondelft/members/sci_mem/seung_sup-lee/index.html 
-% Seung-Sup Lee>
+% Author: <https://cqm.snu.ac.kr Seung-Sup Lee>
 %% 
 % In this tutorial, we implement (i) the "simple update" method for finding 
 % the ground state of a 2D quantum system via imaginary-time evolution, and (ii) 
