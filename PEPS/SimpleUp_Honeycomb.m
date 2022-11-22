@@ -133,13 +133,6 @@ for it1 = (1:numel(betas))
         % imaginary time Trotter step
         T = contract(T,4,[3 4],expH,4,[3 4]);
 
-        % normalize T
-        T = T/norm(T(:)); 
-        
-        % estimate energy
-        HT = contract(T,4,[3 4],H,4,[2 4]);
-        Es(it1,it2) = contract(conj(T),4,(1:4),HT,4,(1:4));
-        
         % decompose the projected bond tensor
         [U,S,V] = svdTr(T,4,[1 3],Nkeep,[]);
         Lambda{it2} = S;
@@ -147,7 +140,15 @@ for it1 = (1:numel(betas))
         % leg)-(physical bond)
         U = permute(U,[1 3 2]);
         V = permute(V,[2 1 3]);
+
+        % normalize T
+        T = T/norm(S(:)); 
         
+        % estimate energy
+        HT = contract(T,4,[3 4],H,4,[2 4]);
+        Es(it1,it2) = contract(conj(T),4,(1:4),HT,4,(1:4));
+        
+        % bring the "bond-projected" tensors back to the Gamma tensors
         GA = contract(UA,z,z,U,3,1,[(1:it2-1) z (it2:z-1) (z+1)]);
         GB = contract(UB,z,z,V,3,1,[(1:it2-1) z (it2:z-1) (z+1)]);
         
