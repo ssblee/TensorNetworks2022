@@ -135,7 +135,7 @@ for it1 = (1:numel(betas))
 
         % decompose the projected bond tensor
         [U,S,V] = svdTr(T,4,[1 3],Nkeep,[]);
-        Lambda{it2} = S;
+        Lambda{it2} = S/norm(S(:));
         % rearrange leg order: (leg to be contracted to UA/UB)-(it2-th
         % leg)-(physical bond)
         U = permute(U,[1 3 2]);
