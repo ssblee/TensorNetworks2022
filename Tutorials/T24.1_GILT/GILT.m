@@ -90,10 +90,10 @@ for itb = (1:numel(betas))
         reshape(M,[2 1 1 2]).* ...
         reshape(M,[2 1 1 1 2]),1),[2 2 2 2]);
 
-    [Nsq,Sv_trg{itb}] = TRG_GILT_Square(T,rgstep,Nkeep,'GILT',0);
+    [Nsq,Sv_trg{itb}] = TRG_GILT_Square_Ex (T,rgstep,Nkeep,'GILT',0);
     Ftrg(itb) = -log(Nsq)/betas(itb);
 
-    [Nsq,Sv_gilt{itb}] = TRG_GILT_Square(T,rgstep,Nkeep,'GILT',1e3);
+    [Nsq,Sv_gilt{itb}] = TRG_GILT_Square_Ex (T,rgstep,Nkeep,'GILT',1e3);
     Fgilt(itb) = -log(Nsq)/betas(itb);
 end
 %% 
