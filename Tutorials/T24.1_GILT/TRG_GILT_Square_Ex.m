@@ -111,7 +111,7 @@ Ts(:) = {permute(T,[4 2 1 3])}; % re-order the legs to a counter-clockwise order
 %        |            |
 %      4 |            | 2
 %  1     |     3      |     1
-% ---- Ts{1} ------ Ts{2} ----
+% ---- Ts{4} ------ Ts{3} ----
 %        |            |
 %      2 |          4 |
 

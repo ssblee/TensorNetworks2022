@@ -8,7 +8,11 @@
 % with this script. This function is designed to perform the TRG calculations 
 % of contracting a tensor network on an exponentially large square lattice with 
 % periodic boundary conditions. If an option |GILT| is set with a positive integer, 
-% then the function also performs the GILT to optimize the bonds between the tensors.
+% then the function will also perform the GILT to optimize the bonds between the 
+% tensors.
+% 
+% The provided file is incomplete. Complete the parts enclosed by the comments 
+% |TODO (start)| and |TODO (end)|.
 % 
 % Refer to Sec. II A of Gu2008 [<https://journals.aps.org/prb/abstract/10.1103/PhysRevB.78.205116 
 % Z.-C. Gu, M. Levin, and X.-G. Wen, Phys. Rev. B *78*, 205116 (2008)>] for the 
