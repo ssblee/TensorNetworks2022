@@ -34,6 +34,8 @@ function C = contract(A,rankA,idA,B,rankB,idB,varargin)
 %
 % Written by S.Lee (Apr.30,2017)
 % Updated by S.Lee (Apr.25,2019): Revised code.
+% Updated by S.Lee (Nov.23,2022): Very minor fix; removed the explicit use
+%       of "bsxfun".
 
 
 % % default values of options
@@ -82,14 +84,14 @@ if ~isempty(idA) % sanity check of idA and idB
     idB = idB(:).';
     
     % logical array to check that idA has unique elements
-    oks = bsxfun(@eq, (1:rankA).', idA);
+    oks = ((1:rankA).' == idA);
     if ~all(any(oks,1)) ... % if elements are not in the range [1, rankA]
             || any(sum(oks,2) > 1) % if elements are not unique
         error(['ERR: idA = [',sprintf('%.4g ',idA), ...
             '] should consist of unique integers in the range (1:rank(A)).']);
     end
     % likewise for idB
-    oks = bsxfun(@eq, (1:rankB).', idB);
+    oks = ((1:rankB).' == idB);
     if ~all(any(oks,1)) ... % if elements are not in the range [1, rankA]
             || any(sum(oks,2) > 1) % if elements are not unique
         error(['ERR: idB = [',sprintf('%.4g ',idB), ...

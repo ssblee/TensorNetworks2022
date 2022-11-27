@@ -8,6 +8,7 @@
 %
 % Written by S.Lee (Apr.21,2017)
 % Rewritten by S.Lee (Aug.31,2022)
+% Updated by S.Lee (Nov.23,2022): Add one more sub-directory "ML".
 
 % % Reset path
 % temporarily turn off warning; if warning is not turned off above, MATLAB
@@ -21,11 +22,11 @@ warning('on','MATLAB:dispatcher:pathWarning'); % turn on warning back
 % % Add to path
 fpath = fileparts(mfilename('fullpath')); % the TN directory in which this "startup.m" lies
 addpath(fpath);
-dirnames = {'MyWork','Util','Tensor','NRG','DMRG','PEPS','Tutorials'}; % subdirectories
+dirnames = {'MyWork','Util','Tensor','NRG','DMRG','PEPS','ML','Tutorials'}; % sub-directories
 for it1 = (1:numel(dirnames))
     fpath2 = [fpath,filesep,dirnames{it1}];
     if exist(fpath2,'dir')
-        addpath(genpath(fpath2)); % add subdirectories to path
+        addpath(genpath(fpath2)); % add sub-directories to path
     end
     addpath(genpath(fpath2));
 end
