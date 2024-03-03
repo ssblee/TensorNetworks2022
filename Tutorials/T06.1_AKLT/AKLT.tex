@@ -97,7 +97,7 @@ where $\sigma = 1, 2, 3$ are the indices for the $S_z = +1, 0, -1$ states at eac
 Verify that the tensor $B$ is both left- and right-normalized.
 
 \item
-Compute the transfer operator $T^{(\alpha, \alpha')}_{\phantom{(\alpha, \alpha')} (\beta, \beta')} = \sum_{\sigma} B^{\dagger \beta'}_{\phantom{\beta'} \alpha'  \sigma} B^{\alpha \phantom{\beta} \sigma}_{\phantom{\alpha} \beta}$ without local operators.
+Compute the transfer operator $T^{(\alpha, \alpha')}_{\phantom{(\alpha, \alpha')} (\beta, \beta')} = \sum_{\sigma} B^{\dagger \beta'}_{\phantom{\beta'} \alpha'  \sigma} B^{\alpha \phantom{\beta} \sigma}_{\phantom{\alpha} \beta} = \sum_{\sigma} B^{* \,\, \beta'}_{\alpha' \,\,\, \sigma} B^{\alpha \phantom{\beta} \sigma}_{\phantom{\alpha} \beta}$ without local operators.
 Verify that the eigenvalues of $T$ are $(1, -1/3, -1/3, -1/3)$.
 Note that the arrows for the left and right legs of $B^\dagger$, indexed by $\alpha'$ and $\beta'$, respectively, are implicitly flipped.
 
@@ -106,8 +106,8 @@ A transfer operator involving a local operator $\hat{O}$ acting on the physical 
 \begin{equation}
 [T_{\hat{O}}]^{(\alpha, \alpha')}_{\phantom{(\alpha, \alpha')} (\beta, \beta')} 
 = \sum_{\sigma, \sigma'} B^{\dagger \beta'}_{\phantom{\beta'} \alpha'  \sigma'}
-[\hat{O}]^{\sigma}_{\phantom{\sigma} \sigma'}
-B^{\alpha \phantom{\beta} \sigma}_{\phantom{\alpha} \beta} .
+[\hat{O}]^{\sigma'}_{\phantom{\sigma'} \sigma}
+B^{\alpha \phantom{\beta} \sigma}_{\phantom{\alpha'} \beta} .
 \end{equation}
 Obtain the transfer operators for $\hat{O} = \hat{S}_z$ and for $\hat{O} = \exp (\mathrm{i} \pi \hat{S}_z)$.
 
