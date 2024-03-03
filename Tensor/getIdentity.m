@@ -25,10 +25,10 @@ function A = getIdentity(B,idB,varargin)
 % example, consider a ket tensor B and the identity operator C at local
 % site. Then A = getIdentity(B,2,C,2) results in another ket tensor A:
 %
-%   1      2    1       2
+%   1      2    1       3
 %  -->- B ->--*-->- A ->--
 %       |           |
-%     3 ^         3 ^
+%     3 ^         2 ^
 %       |           |
 %                   *
 %                 2 ^           
@@ -55,6 +55,7 @@ function A = getIdentity(B,idB,varargin)
 %
 % Written by S.Lee (May 2, 2017)
 % Documentation edited by S.Lee (Sep.08,2022)
+% Updated by S.Lee (Mar.03,2024): Fixed a typo in the documentation.
 
 % parsing input
 if nargin > 3 % combine the spaces of two tensors
