@@ -22,7 +22,7 @@ warning('on','MATLAB:dispatcher:pathWarning'); % turn on warning back
 % % Add to path
 fpath = fileparts(mfilename('fullpath')); % the TN directory in which this "startup.m" lies
 addpath(fpath);
-dirnames = {'MyWork','Util','Tensor','NRG','DMRG','PEPS','ML','Tutorials'}; % sub-directories
+dirnames = {'exercise','Util','Tensor','NRG','DMRG','PEPS','ML','Tutorials'}; % sub-directories
 for it1 = (1:numel(dirnames))
     fpath2 = [fpath,filesep,dirnames{it1}];
     if exist(fpath2,'dir')
